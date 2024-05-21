@@ -20,6 +20,7 @@ const Page = (props: Props) => {
         title: "Classic Cheesy",
         description: "Chicken breast, tomatoes, cheesy sauce",
         price: 125,
+        offer: true,
       },
       {
         id: "2",

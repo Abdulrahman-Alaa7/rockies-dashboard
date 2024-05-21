@@ -3,8 +3,6 @@ import Heading from "../../../utils/Heading";
 import BreadCrumb from "../../../components/Breadcrumb";
 import { HeadPage } from "../../../../components/ui/HeadPage";
 import { Separator } from "../../../../components/ui/separator";
-import { Switch } from "../../../../components/ui/switch";
-import { Label } from "../../../../components/ui/label";
 import { ScrollArea } from "../../../../components/ui/scroll-area";
 import EditProfile from "../../../components/Profile/EditProfile";
 
