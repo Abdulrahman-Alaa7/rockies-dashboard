@@ -25,7 +25,7 @@ const Page = (props: Props) => {
   };
 
   return (
-    <div>
+    <>
       <Heading
         title="Rockies's Categories"
         description="Rockies is a special food truck."
@@ -44,7 +44,7 @@ const Page = (props: Props) => {
           <CategoryItem categories={categories} />
         </div>
       </ScrollArea>
-    </div>
+    </>
   );
 };
 
