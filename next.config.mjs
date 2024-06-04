@@ -1,9 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    reactRoot: true,
-    suppressHydrationWarning: true,
-  },
-};
+const nextConfig = {};
 
 export default nextConfig;

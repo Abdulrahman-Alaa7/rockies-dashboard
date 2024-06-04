@@ -44,11 +44,7 @@ const ChangePassword = (props: Props) => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button
-            className={`mx-auto w-[250px] flex justify-center items-center`}
-          >
-            Save password
-          </Button>
+          <Button>Save password</Button>
         </CardFooter>
       </Card>
     </div>

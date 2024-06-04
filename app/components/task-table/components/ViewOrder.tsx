@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Button } from "../../../../components/ui/button";
 import { Orders } from "../../../../constants/data";
 import { Badge } from "../../../../components/ui/badge";
@@ -13,19 +13,11 @@ import {
   TableRow,
 } from "../../../../components/ui/table";
 import { Trash2 } from "lucide-react";
-import { Printer } from "lucide-react";
-import { AlertModal } from "../../alert-modal";
-
 type Props = {
   id: any;
 };
 
 const ViewOrder: FC<Props> = ({ id }) => {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  const onConfirm = async () => {};
-
   const orders = Orders;
 
   const viewData = orders && orders.find((i: any) => i.id === id);
@@ -44,12 +36,6 @@ const ViewOrder: FC<Props> = ({ id }) => {
     <div
       className={`flex-1 space-y-2  p-4 md:p-8 pt-6 flex-col justify-center items-center`}
     >
-      <AlertModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onConfirm={onConfirm}
-        loading={loading}
-      />
       <h1
         className={`bg-muted font-semibold mx-auto px-6 py-2 w-fit  rounded-3xl flex items-center gap-2 text-[20px]`}
       >
@@ -111,14 +97,7 @@ const ViewOrder: FC<Props> = ({ id }) => {
       </div>
       <br />
       <Button
-        className={`!mx-auto bg-green-500 hover:bg-green-600 px-6 rounded-full my-6 sm:w-[30%] w-[100%] flex justify-center items-center gap-2 `}
-      >
-        <Printer size={18} />
-        Print Order
-      </Button>
-      <Button
         className={`!mx-auto px-6 rounded-full my-6 sm:w-[30%] w-[100%] flex justify-center items-center gap-2 `}
-        onClick={() => setOpen(true)}
       >
         <Trash2 size={18} />
         Delete Order

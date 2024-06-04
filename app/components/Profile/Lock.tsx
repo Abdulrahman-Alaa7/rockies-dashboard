@@ -32,11 +32,8 @@ const Lock = (props: Props) => {
           </div>
         </CardContent>
         <CardFooter>
-          <Button
-            type="button"
-            className="mx-auto w-[250px] flex justify-center items-center"
-          >
-            Save
+          <Button type="button" className="mx-auto">
+            Save changes
           </Button>
         </CardFooter>
       </Card>

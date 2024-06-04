@@ -16,7 +16,7 @@ export default function Header() {
           <Link
             aria-current="page"
             className="flex items-center gap-1"
-            href="/"
+            href="/dashboard"
           >
             <Image
               className=" mr-2 h-10 w-10 rounded-full"

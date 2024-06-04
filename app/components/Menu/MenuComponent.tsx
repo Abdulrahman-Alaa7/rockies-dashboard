@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "../../../components/ui/button";
 import { BiCarousel } from "react-icons/bi";
 import { GoEyeClosed } from "react-icons/go";
-import { Pencil, Trash2, BadgeCheck } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -15,7 +15,6 @@ import {
 import { AlertModal } from "../alert-modal";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Badge } from "../../../components/ui/badge";
 
 type Props = {
   menu: any[];
@@ -28,7 +27,6 @@ const MenuComponent: FC<Props> = ({ menu }) => {
   const [open, setOpen] = useState(false);
 
   const onConfirm = async () => {};
-
   return (
     <div>
       {Object.keys(menu).map((category: any) => (
@@ -55,7 +53,6 @@ const MenuComponent: FC<Props> = ({ menu }) => {
                     />
                   </div>
                 )}
-
                 <h3 className="text-lg font-semibold text-white py-2 px-1 uppercase">
                   {item.title}
                 </h3>
@@ -64,22 +61,9 @@ const MenuComponent: FC<Props> = ({ menu }) => {
                     {item.description}
                   </p>
                 )}
-                {item.offer && (
-                  <div
-                    className={`absolute top-3 left-3 flex justify-center items-center`}
-                  >
-                    <Badge
-                      className={`bg-slate-900 dark:text-white/90 font-semibold flex gap-1 items-center text-[14px]`}
-                    >
-                      <BadgeCheck color="white" size={19} />
-                      Offer
-                    </Badge>
-                  </div>
-                )}
                 <p className="text-[#ffffffcc] p-1 font-bold">
                   EGP {item.price}
                 </p>
-
                 {item.typesRec ? (
                   <div
                     className={`flex justify-center items-center mt-12 mb-9 flex-col`}

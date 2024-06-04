@@ -1,6 +1,6 @@
-import React, { FC } from "react";
 import Heading from "../../utils/Heading";
-import { ScrollArea } from "../../../components/ui/scroll-area";
+import { Overview } from "../../components/OverView";
+import { RecentSales } from "../../components/RecentSales";
 import { Button } from "../../../components/ui/button";
 import {
   Card,
@@ -9,87 +9,120 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
+import { ScrollArea } from "../../../components/ui/scroll-area";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "../../../components/ui/tabs";
-import { FiRefreshCw } from "react-icons/fi";
-import { LayoutList } from "lucide-react";
-import { DataTable } from "@/app/components/task-table/components/data-table";
-import { orders } from "@/app/components/task-table/data/orders";
-import { columns } from "@/app/components/task-table/components/columns";
+import { Activity, CreditCard, PoundSterling, Users } from "lucide-react";
 
-type Props = {};
-
-const Page: FC<Props> = ({}) => {
+export default function page() {
   return (
-    <>
+    <ScrollArea className="h-full">
       <Heading
         title="Rockies's Dashboard"
         description="Rockies is a special food truck."
         keywords="Food, Burger, Ice cream and more"
       />
-      <ScrollArea className="h-full">
-        <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">
-              Hi, Welcome back 👋
-            </h2>
+      <div className="flex-1 space-y-4 p-4 pt-6 md:p-8">
+        <div className="flex items-center justify-between space-y-2">
+          <h2 className="text-3xl font-bold tracking-tight">
+            Hi, Welcome back 👋
+          </h2>
+          <div className="hidden items-center space-x-2 md:flex">
+            <Button>Download</Button>
           </div>
-
-          <Tabs defaultValue="overview" className="space-y-4">
-            <div className="flex justify-center items-center gap-6">
-              <h2 className={`bg-muted py-2 px-3 rounded-lg font-semibold`}>
-                Overview
-              </h2>
-              <div className=" flex items-center space-x-2">
-                <Button>
-                  <FiRefreshCw size={20} className="mr-2" /> Refresh
-                </Button>
-              </div>
+        </div>
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList>
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics" disabled>
+              Analytics
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="overview" className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Total Revenue
+                  </CardTitle>
+                  <PoundSterling className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">£45,231.89</div>
+                  <p className="text-xs text-muted-foreground">
+                    +20.1% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Subscriptions
+                  </CardTitle>
+                  <Users className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+2350</div>
+                  <p className="text-xs text-muted-foreground">
+                    +180.1% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                  <CreditCard className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+12,234</div>
+                  <p className="text-xs text-muted-foreground">
+                    +19% from last month
+                  </p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">
+                    Active Now
+                  </CardTitle>
+                  <Activity className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">+573</div>
+                  <p className="text-xs text-muted-foreground">
+                    +201 since last hour
+                  </p>
+                </CardContent>
+              </Card>
             </div>
-            <TabsContent value="overview" className="space-y-4">
-              <div className="flex justify-center items-center">
-                <Card className=" ">
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Recent Orders
-                    </CardTitle>
-                    <LayoutList size={18} className=" text-muted-foreground" />
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold bg-primary w-fit p-2 rounded-lg my-2 text-white/80 mx-auto">
-                      17
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      These are active orders now
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="">
-                <Card className="">
-                  <CardHeader className="!pb-2">
-                    <CardTitle>Recent Orders</CardTitle>
-                    <CardDescription>You have 17 order now.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="w-[350px] sm:w-[650px] md:w-[750px] lg:w-full mx-auto">
-                    <DataTable
-                      data={orders}
-                      columns={columns}
-                      dashboard={true}
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>{" "}
-      </ScrollArea>
-    </>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-7">
+              <Card className="col-span-4">
+                <CardHeader>
+                  <CardTitle>Overview</CardTitle>
+                </CardHeader>
+                <CardContent className="pl-2">
+                  <Overview />
+                </CardContent>
+              </Card>
+              <Card className="col-span-4 md:col-span-3">
+                <CardHeader>
+                  <CardTitle>Recent Sales</CardTitle>
+                  <CardDescription>
+                    You made 265 sales this month.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <RecentSales />
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </ScrollArea>
   );
-};
-
-export default Page;
+}
